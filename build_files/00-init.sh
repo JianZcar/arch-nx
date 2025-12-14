@@ -18,6 +18,12 @@ When = PostTransaction
 Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
+mkdir -p \
+      /usr/lib/sysimage/var/lib/pacman/sync \
+      /usr/lib/sysimage/var/cache/pacman/pkg \
+      /usr/lib/sysimage/var/log \
+      /usr/lib/sysimage/etc/pacman.d/gnupg \
+
 pacman-key --init
 pacman -Syu --noconfirm
 
@@ -70,6 +76,7 @@ packages=(
   shadow
 )
 
+pacman-key --populate archlinux cachyos
 pacman -Sy --noconfirm pacman linux-firmware
 pacman -Syu --noconfirm --ignore=linux-firmware "${packages[@]}"
 
