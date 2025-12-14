@@ -56,7 +56,12 @@ packages=(
   linux-cachyos-bore-headers
   linux-cachyos-bore-nvidia
 
-  linux-firmware
+  linux-firmware-intel
+  linux-firmware-nvidia
+  linux-firmware-atheros
+  linux-firmware-broadcom
+  linux-firmware-realtek
+
   ostree
   systemd
   btrfs-progs
