@@ -88,9 +88,8 @@ packages=(
   chaotic-aur/bootc
 )
 
-pacman-key --populate archlinux cachyos
 pacman -Sy --noconfirm pacman
-pacman -S --noconfirm --overwrite '*' $(pacman -Qq)
+pacman -S --noconfirm $(pacman -Qq)
 pacman -S --noconfirm "${packages[@]}"
 
 echo "::endgroup::"
