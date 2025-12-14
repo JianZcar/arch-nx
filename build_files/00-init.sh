@@ -18,17 +18,11 @@ When = PostTransaction
 Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
-mkdir -p \
-      /usr/lib/sysimage/var/lib/pacman/sync \
-      /usr/lib/sysimage/var/cache/pacman/pkg \
-      /usr/lib/sysimage/var/log \
-      /usr/lib/sysimage/etc/pacman.d/gnupg \
-
 pacman-key --init
 pacman -Syu --noconfirm
 
 # Import the repository key
-pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
+pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com --allow-weak-key-signatures
 # Sign the repository key
 pacman-key --lsign-key F3B607488DB35A47
 
