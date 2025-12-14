@@ -73,7 +73,7 @@ packages=(
 
 
 pacman -Sy --noconfirm pacman
-pacman -Su --noconfirm
+pacman -Syu --noconfirm
 pacman -S --noconfirm "${packages[@]}"
 
 mkinitcpio -P
