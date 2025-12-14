@@ -18,8 +18,8 @@ When = PostTransaction
 Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
-pacman -Syu --noconfirm
 pacman-key --init
+pacman -Syu --noconfirm
 
 # Import the repository key
 pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
@@ -73,6 +73,6 @@ packages=(
 
 
 pacman -Sy --noconfirm pacman
-pacman -S --noconfirm "${packages[@]}"
+pacman -Syu --noconfirm "${packages[@]}"
 
 echo "::endgroup::"
