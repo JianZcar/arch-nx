@@ -31,7 +31,7 @@ pacman -U \
   'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-v3-mirrorlist-22-1-any.pkg.tar.zst'
 
 
-sh -c 'cat <<EOF > /tmp/cachyos‑repos &&
+cat <<EOF > /tmp/cachyos-repos
 [cachyos-v3]
 Include = /etc/pacman.d/cachyos-v3-mirrorlist
 
@@ -44,8 +44,10 @@ Include = /etc/pacman.d/cachyos-v3-mirrorlist
 [cachyos]
 Include = /etc/pacman.d/cachyos-mirrorlist
 EOF
-cat /etc/pacman.conf >> /tmp/cachyos‑repos
-mv /tmp/cachyos‑repos /etc/pacman.conf'
+
+cat /etc/pacman.conf >> /tmp/cachyos-repos
+
+mv /tmp/cachyos-repos /etc/pacman.conf
 
 sed -i '/^\s*#\s*\[multilib\]/s/^#\s*//' /etc/pacman.conf
 sed -i '/^\s*#\s*Include = \/etc\/pacman.d\/mirrorlist/ s/^#\s*//' /etc/pacman.conf
