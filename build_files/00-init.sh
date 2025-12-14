@@ -76,7 +76,7 @@ packages=(
   shadow
 )
 
-pacman -Sy --noconfirm pacman
-pacman -Syu --noconfirm --ignore=linux-firmware "${packages[@]}"
+pacman -Sy --noconfirm pacman linux-firmware
+pacman -Syu --noconfirm "${packages[@]}"
 
 echo "::endgroup::"
