@@ -1,3 +1,6 @@
+LABEL containers.bootc 1
+LABEL ostree.bootable 1
+
 FROM scratch AS ctx
 COPY build_files /
 
