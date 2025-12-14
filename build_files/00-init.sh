@@ -19,7 +19,7 @@ Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
 pacman-key --init
-pacman -Syu --noconfirm --ask=4
+pacman -Syu --noconfirm linux-firmware
 
 # Import the repository key
 pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
@@ -56,11 +56,7 @@ packages=(
   linux-cachyos-bore-headers
   linux-cachyos-bore-nvidia
 
-  linux-firmware-intel
-  linux-firmware-nvidia
-  linux-firmware-atheros
-  linux-firmware-broadcom
-  linux-firmware-realtek
+  linux-firmware
 
   ostree
   systemd
@@ -78,7 +74,7 @@ packages=(
 
 
 pacman -Sy --noconfirm pacman
-pacman -Syy --noconfirm
+pacman -Rdd --noconfirm linux-firmware
 pacman -Syu --noconfirm --ask=4 "${packages[@]}"
 
 echo "::endgroup::"
