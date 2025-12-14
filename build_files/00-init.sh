@@ -70,7 +70,10 @@ packages=(
   glib2
   shadow
 )
-pacman -Syu --noconfirm
+
+
+pacman -Sy --noconfirm pacman
+pacman -Su --noconfirm
 pacman -S --noconfirm "${packages[@]}"
 
 mkinitcpio -P
