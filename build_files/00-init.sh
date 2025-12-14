@@ -28,7 +28,6 @@ pacman-key --lsign-key F3B607488DB35A47
 
 pacman -U --noconfirm \
   'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-keyring-20240331-1-any.pkg.tar.zst' \
-  'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-mirrorlist-22-1-any.pkg.tar.zst' \
   'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-v3-mirrorlist-22-1-any.pkg.tar.zst'
 
 
@@ -41,9 +40,6 @@ Include = /etc/pacman.d/cachyos-v3-mirrorlist
 
 [cachyos-extra-v3]
 Include = /etc/pacman.d/cachyos-v3-mirrorlist
-
-[cachyos]
-Include = /etc/pacman.d/cachyos-mirrorlist
 EOF
 
 cat /etc/pacman.conf
