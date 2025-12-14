@@ -73,7 +73,7 @@ packages=(
 )
 
 pacman-key --populate archlinux cachyos
-pacman -Sy
+pacman -Sy --noconfirm pacman
 pacman -S --noconfirm --overwrite '*' $(pacman -Qq)
 pacman -S --noconfirm "${packages[@]}"
 
