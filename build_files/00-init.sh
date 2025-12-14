@@ -22,7 +22,7 @@ pacman-key --init
 pacman -Syu --noconfirm
 
 # Import the repository key
-pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com --allow-weak-key-signatures
+pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
 # Sign the repository key
 pacman-key --lsign-key F3B607488DB35A47
 
@@ -69,9 +69,9 @@ packages=(
   glib2
   shadow
 )
-
 pacman-key --populate archlinux cachyos
 pacman -Sy --noconfirm pacman linux-firmware
-pacman -Syu --noconfirm --ignore=linux-firmware "${packages[@]}"
+pacman -Syu --noconfirm
+pacman -S --noconfirm --ignore=linux-firmware "${packages[@]}"
 
 echo "::endgroup::"
