@@ -79,7 +79,7 @@ jobs:
             ./Containerfile
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ steps.set_tags.outputs.tags }}
-          oci: true
+          oci: false
 
       - name: Save image to docker-archive
         run: |
