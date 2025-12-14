@@ -46,12 +46,10 @@ Include = /etc/pacman.d/cachyos-v3-mirrorlist
 Include = /etc/pacman.d/cachyos-mirrorlist
 EOF
 
+cat /etc/pacman.conf
 cat /etc/pacman.conf >> /tmp/cachyos-repos
 
 mv /tmp/cachyos-repos /etc/pacman.conf
-
-sed -i '/^\s*#\s*\[multilib\]/s/^#\s*//' /etc/pacman.conf
-sed -i '/^\s*#\s*Include = \/etc\/pacman.d\/mirrorlist/ s/^#\s*//' /etc/pacman.conf
 
 packages=(
     base
@@ -60,9 +58,6 @@ packages=(
     linux-cachyos-bore
     linux-cachyos-bore-headers
     linux-cachyos-bore-nvidia
-    lib32-nvidia-utils
-    lib32-opencl-nvidia
-    lib32-libvdpau
 
     linux-firmware
     ostree
