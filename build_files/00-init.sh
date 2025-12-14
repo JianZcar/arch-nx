@@ -56,12 +56,6 @@ packages=(
   linux-cachyos-bore-headers
   linux-cachyos-bore-nvidia
 
-  linux-firmware-intel
-  linux-firmware-nvidia
-  linux-firmware-atheros
-  linux-firmware-broadcom
-  linux-firmware-realtek
-
   ostree
   systemd
   btrfs-progs
@@ -77,6 +71,6 @@ packages=(
 )
 
 pacman -Sy --noconfirm pacman linux-firmware
-pacman -Syu --noconfirm "${packages[@]}"
+pacman -Syu --noconfirm --ignore=linux-firmware "${packages[@]}"
 
 echo "::endgroup::"
