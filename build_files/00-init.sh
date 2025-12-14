@@ -19,7 +19,7 @@ Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
 pacman-key --init
-pacman -Syu --noconfirm
+pacman -Syu --noconfirm --ask=4
 
 # Import the repository key
 pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
@@ -73,6 +73,6 @@ packages=(
 
 
 pacman -Sy --noconfirm pacman
-pacman -Syu --noconfirm "${packages[@]}"
+pacman -Syu --noconfirm --ask=4 "${packages[@]}"
 
 echo "::endgroup::"
