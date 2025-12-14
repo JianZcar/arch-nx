@@ -79,7 +79,7 @@ packages=(
     shadow
 )
 
-pacman -S --noconfirm "${packages[@]}"
+pacman -Syy --noconfirm "${packages[@]}"
 
 mkinitcpio -P
 echo "::endgroup::"
