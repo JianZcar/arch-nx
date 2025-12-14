@@ -77,6 +77,8 @@ jobs:
           sudo buildah bud \
             --format docker \
             --tag "${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" \
+            --label containers.bootc=1 \
+            --label ostree.bootable=1 \
             --file Containerfile
 
       - name: Save image to docker-archive
