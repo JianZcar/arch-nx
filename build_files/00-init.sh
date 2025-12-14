@@ -73,6 +73,7 @@ packages=(
 
 
 pacman -Sy --noconfirm pacman
+pacman -Rdd linux-firmware || true
 pacman -Syu --noconfirm --ask=4 "${packages[@]}"
 
 echo "::endgroup::"
