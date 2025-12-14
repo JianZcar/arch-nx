@@ -28,7 +28,10 @@ pacman-key --lsign-key F3B607488DB35A47
 
 pacman -U --noconfirm \
   'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-keyring-20240331-1-any.pkg.tar.zst' \
-  'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-v3-mirrorlist-22-1-any.pkg.tar.zst'
+  'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-mirrorlist-22-1-any.pkg.tar.zst' \
+  'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-mirrorlist-22-1-any.pkg.tar.zst' \
+  'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-v3-mirrorlist-22-1-any.pkg.tar.zst' \
+  'https://mirror.cachyos.org/repo/x86_64/cachyos/pacman-7.0.0.r7.g1f38429-2-x86_64.pkg.tar.zst'
 
 
 cat <<EOF > /tmp/cachyos-repos
@@ -40,6 +43,9 @@ Include = /etc/pacman.d/cachyos-v3-mirrorlist
 
 [cachyos-extra-v3]
 Include = /etc/pacman.d/cachyos-v3-mirrorlist
+
+[cachyos]
+Include = /etc/pacman.d/cachyos-mirrorlist
 EOF
 
 cat /etc/pacman.conf
@@ -48,26 +54,26 @@ cat /etc/pacman.conf >> /tmp/cachyos-repos
 mv /tmp/cachyos-repos /etc/pacman.conf
 
 packages=(
-    base
-    dracut
+  base
+  dracut
 
-    linux-cachyos-bore
-    linux-cachyos-bore-headers
-    linux-cachyos-bore-nvidia
+  linux-cachyos-bore
+  linux-cachyos-bore-headers
+  linux-cachyos-bore-nvidia
 
-    linux-firmware
-    ostree
-    systemd
-    btrfs-progs
-    e2fsprogs
-    xfsprogs
-    binutils
-    dosfstools
-    skopeo
-    dbus
-    dbus-glib
-    glib2
-    shadow
+  linux-firmware
+  ostree
+  systemd
+  btrfs-progs
+  e2fsprogs
+  xfsprogs
+  binutils
+  dosfstools
+  skopeo
+  dbus
+  dbus-glib
+  glib2
+  shadow
 )
 
 pacman -Syy --noconfirm "${packages[@]}"
