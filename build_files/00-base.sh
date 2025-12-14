@@ -70,7 +70,6 @@ packages=(
   linux-cachyos-bore
   linux-cachyos-bore-headers
   linux-cachyos-bore-nvidia
-
   linux-firmware
 
   ostree
@@ -95,34 +94,23 @@ packages=(
   sudo
   bash
   bash-completion
-  fish
-  fastfetch
-  btop
   jq
   less
   lsof
   nano
   openssh
-  powertop
   man-db
   wget
-  yt-dlp
   tree
   usbutils
   vim
-  nvim
-  wl-clip-persist
-  cliphist
-  unzip
-  ptyxis
   glibc-locales
   tar
   udev
-  starship
-  tuned-ppd
-  tuned
   curl
-  patchelf
+  unzip
+  tuned
+  tuned-ppd
 )
 pacman -S --noconfirm "${packages[@]}"
 
