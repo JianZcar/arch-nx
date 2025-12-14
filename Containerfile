@@ -1,4 +1,6 @@
 FROM scratch AS ctx
+COPY build_files /
+
 FROM docker.io/archlinux/archlinux:latest
 
 # Move everything from `/var` to `/usr/lib/sysimage` so behavior around pacman remains the same on `bootc usroverlay`'d systems
