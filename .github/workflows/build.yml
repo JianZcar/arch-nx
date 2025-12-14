@@ -83,7 +83,7 @@ jobs:
       - name: Save image to docker-archive
         run: |
           sudo buildah push \
-            "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" \
+            "${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" \
             "docker-archive:image.tar"
 
       - name: Upload image artifact
