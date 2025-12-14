@@ -72,17 +72,19 @@ jobs:
           echo "tags=$TAGS" >> $GITHUB_OUTPUT
 
       - name: Build Image
+        id: build_image
         uses: redhat-actions/buildah-build@7a95fa7ee0f02d552a32753e7414641a04307056
         with:
           containerfiles: |
             ./Containerfile
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ steps.set_tags.outputs.tags }}
+          oci: true
 
       - name: Save image to docker-archive
         run: |
           sudo buildah push \
-            "${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}" \
+            "${{ steps.build_image.outputs.image-with-tag }}" \
             "docker-archive:image.tar"
 
       - name: Upload image artifact
