@@ -19,7 +19,7 @@ Exec = /usr/bin/rm -rf /var/cache/pacman/pkg
 EOF
 
 pacman-key --init
-pacman -Syu --noconfirm linux-firmware
+pacman -Syu --noconfirm
 
 # Import the repository key
 pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com
@@ -71,11 +71,9 @@ packages=(
   glib2
   shadow
 )
-
+rm -rf /usr/lib/firmware/*
 
 pacman -Sy --noconfirm pacman
-pacman -Rdd --noconfirm linux-firmware
-pacman -Syu linux-firmware
 pacman -Syu --noconfirm --ask=4 "${packages[@]}"
 
 echo "::endgroup::"
