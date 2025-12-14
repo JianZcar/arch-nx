@@ -56,6 +56,8 @@ packages=(
   linux-cachyos-bore-headers
   linux-cachyos-bore-nvidia
 
+  linux-firmware
+
   ostree
   systemd
   btrfs-progs
@@ -69,9 +71,10 @@ packages=(
   glib2
   shadow
 )
+
 pacman-key --populate archlinux cachyos
-pacman -Sy --noconfirm pacman linux-firmware
-pacman -Syu --noconfirm
-pacman -S --noconfirm --ignore=linux-firmware "${packages[@]}"
+pacman -Sy
+pacman -S --noconfirm --overwrite '*' $(pacman -Qq)
+pacman -S --noconfirm "${packages[@]}"
 
 echo "::endgroup::"
