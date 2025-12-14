@@ -4,7 +4,7 @@ echo "::group:: ===$(basename "$0")==="
 
 set -ouex pipefail
 
-tee /usr/share/libalpm/hooks/package-cleanup.hook > /dev/null << 'EOF'
+cat << 'EOF' > /usr/share/libalpm/hooks/package-cleanup.hook
 [Trigger]
 Operation = Install
 Operation = Upgrade
@@ -26,8 +26,6 @@ pacman-key --lsign-key F3B607488DB35A47
 
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
-
-
 
 pacman -U --noconfirm \
   'https://mirror.cachyos.org/repo/x86_64/cachyos/cachyos-keyring-20240331-1-any.pkg.tar.zst' \
@@ -59,9 +57,12 @@ EOF
 
 cat /etc/pacman.conf
 cat /etc/pacman.conf >> /tmp/cachyos-repos
-
 mv /tmp/cachyos-repos /etc/pacman.conf
 
+pacman -Sy --noconfirm pacman
+pacman -S --noconfirm $(pacman -Qq)
+
+# Base Packages
 packages=(
   base
   dracut
@@ -87,9 +88,42 @@ packages=(
 
   chaotic-aur/bootc
 )
+pacman -S --noconfirm "${packages[@]}"
 
-pacman -Sy --noconfirm pacman
-pacman -S --noconfirm $(pacman -Qq)
+# CLI Utilities
+packages=(
+  sudo
+  bash
+  bash-completion
+  fish
+  fastfetch
+  btop
+  jq
+  less
+  lsof
+  nano
+  openssh
+  powertop
+  man-db
+  wget
+  yt-dlp
+  tree
+  usbutils
+  vim
+  nvim
+  wl-clip-persist
+  cliphist
+  unzip
+  ptyxis
+  glibc-locales
+  tar
+  udev
+  starship
+  tuned-ppd
+  tuned
+  curl
+  patchelf
+)
 pacman -S --noconfirm "${packages[@]}"
 
 echo "::endgroup::"
