@@ -75,5 +75,4 @@ packages=(
 pacman -Sy --noconfirm pacman
 pacman -S --noconfirm "${packages[@]}"
 
-mkinitcpio -P
 echo "::endgroup::"
